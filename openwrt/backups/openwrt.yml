@@ -1,0 +1,105 @@
+# # # # # # # # # # #
+# 自动构建 openWrt 模板
+#     花妆男 
+# # # # # # # # # # #
+name: OpenWrt CI Template
+on:
+  # schedule:
+  #   - cron: '0 17 * * *'             # 每天国际时间17点，北京时间1点执行(北京+8)
+  watch:
+    types: [started]
+env:
+  T_NAME: "G-DOCK"                     # 设备名字 (op编译慢所以直接单个的编译) 
+  BASE_PATH: openwrt                   # 基础目录
+  PUBLIC_PATH: public                  # 公共目录
+  PUBLIC_SH: public.sh          # 公共执行文件
+  UPLOAD_BIN_DIR: true                 # 是否导出bin文件
+  UPLOAD_FIRMWARE: true                # 是否导出固件
+  CLONE_URL: https://github.com/coolsnowwolf/lede  # 地址
+  CLONE_BRANCH: master                 # 分支
+  WORK_PATH: opt/openwrt               # 工作目录
+
+jobs:
+  build:
+    runs-on: ubuntu-18.04
+    if: github.event.repository.owner.id == github.event.sender.id
+    steps:
+    - name: Checkout Master               # 1.导入主分支
+      uses: actions/checkout@master
+
+    - name: Initialization Environment    # 2.初始化环境
+      env:
+        DEBIAN_FRONTEND: noninteractive  
+      run: |
+        docker rmi `docker images -q`
+        sudo rm -rf /usr/share/dotnet /etc/mysql /etc/php /etc/apt/sources.list.d
+        sudo -E apt-get -y purge azure-cli ghc* zulu* hhvm llvm* firefox google* dotnet* powershell openjdk* mysql* php*
+        sudo -E apt-get update
+        sudo -E apt-get -y install build-essential asciidoc binutils bzip2 gawk gettext git libncurses5-dev libz-dev patch python3 unzip zlib1g-dev lib32gcc1 libc6-dev-i386 subversion flex uglifyjs gcc-multilib g++-multilib p7zip p7zip-full msmtp libssl-dev texinfo libglib2.0-dev xmlto qemu-utils upx libelf-dev autoconf automake libtool autopoint device-tree-compiler
+        sudo -E apt-get -y autoremove --purge
+        sudo -E apt-get clean
+        sudo timedatectl set-timezone 'Asia/Shanghai'  # 设置时区
+    - name: Clone Code                     # 3.拷贝代码
+      run: |
+        git clone --depth=1 $CLONE_URL -b $CLONE_BRANCH $WORK_PATH
+
+    - name: Update Feeds                  # 4.下载Feeds  
+      run: |
+        cd $WORK_PATH 
+        ./scripts/feeds update -a
+        
+
+    - name: Load Config And Install Feeds    # 5. 加载配置文件  并且安装 Feeds    
+      run: |
+        [ -f $BASE_PATH/$T_NAME/banner ] && cp -f $BASE_PATH/$T_NAME/banner $WORK_PATH/package/base-files/files/etc/banner
+        [ -f $BASE_PATH/$T_NAME/.config ] && cp -f $BASE_PATH/$T_NAME/.config $WORK_PATH/.config
+        [ -f $BASE_PATH/$PUBLIC_PATH/$PUBLIC_SH ] && cp -f $BASE_PATH/$PUBLIC_PATH/$PUBLIC_SH $WORK_PATH
+        [ -f $BASE_PATH/$T_NAME/$T_NAME.sh ] && cp -f $BASE_PATH/$T_NAME/$T_NAME.sh $WORK_PATH
+        cd $WORK_PATH
+        ls -l
+        echo "执行${PUBLIC_SH}"
+        chmod +x ./$PUBLIC_SH
+        sudo ./$PUBLIC_SH
+        if [ -f $T_NAME.sh ] ; then
+          echo "执行${T_NAME}sh"
+          chmod +x ./$T_NAME.sh
+          sudo ./$T_NAME.sh
+        fi
+        ./scripts/feeds install -a
+
+    - name: Download  Package
+      run: |
+        cd $WORK_PATH
+        make defconfig
+        make download -j8
+        find dl -size -1024c -exec ls -l {} \;
+        find dl -size -1024c -exec rm -f {} \;
+
+    - name: Build
+      run: |
+        cd $WORK_PATH
+        echo -e "$(nproc) thread compile"
+        make -j$(nproc) || make -j1 V=s
+
+    - name: Organize Files
+      if: success()
+      run: |
+        cd $WORK_PATH/bin/targets/*/*
+        rm -rf packages
+        echo "::set-env name=FILE_NAME::$T_NAME-$(date "+%Y%m%d")"  # 文件名
+        echo "::set-env name=FIRMWARE::$PWD"                        # Firmware 路径
+        echo "::set-env name=BIN_PATH::$WORK_PATH/bin"              # BIN 文件路径
+
+    - name: Upload Bin Directory
+      uses: actions/upload-artifact@master
+      if: env.UPLOAD_BIN_DIR == 'true' && success()
+      with:
+        name: OpenWrt-${{env.FILE_NAME}}-Bin
+        path: ${{ env.BIN_PATH }}
+
+    - name: Upload Firmware Directory
+      uses: actions/upload-artifact@master
+      if: success()
+      with:
+        name: OpenWrt-${{env.FILE_NAME}}
+        path: ${{ env.FIRMWARE }}
