@@ -56,10 +56,10 @@ mv -f package-temp/openwrt-package/lienol/*  package/lean/
 
 echo '添加Passwall'
 echo 'CONFIG_PACKAGE_luci-app-passwall' >> .config
-echo 'PACKAGE_luci-app-passwall_INCLUDE_Shadowsocks' >> .config
-echo 'PACKAGE_luci-app-passwall_INCLUDE_Trojan' >> .config
-echo 'PACKAGE_luci-app-passwall_INCLUDE_simple-obfs' >> .config
-echo 'PACKAGE_luci-app-passwall_INCLUDE_v2ray-plugin' >> .config
+echo 'CONFIG_PACKAGE_luci-app-passwall_INCLUDE_Shadowsocks' >> .config
+echo 'CONFIG_PACKAGE_luci-app-passwall_INCLUDE_Trojan' >> .config
+echo 'CONFIG_PACKAGE_luci-app-passwall_INCLUDE_simple-obfs' >> .config
+echo 'CONFIG_PACKAGE_luci-app-passwall_INCLUDE_v2ray-plugin' >> .config
 echo 'CONFIG_PACKAGE_luci-i18n-passwall-zh-cn=y'  >> .config
 
 echo '删除下载缓存'
