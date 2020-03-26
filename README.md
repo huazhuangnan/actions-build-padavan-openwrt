@@ -32,6 +32,7 @@
 ### 默认编译
 
 - fork 到自己仓库后(按需修改配置文件)然后点击 star (星标开始全部编译)；依赖这句判断:`github.event.repository.owner.id == github.event.sender.id`
+- 文件打包完会在action的任务里面
 
 ### 定时编译
 
@@ -50,6 +51,7 @@
   |-- padavan           # padavan 有关
   |   |-- backups       # padanvan文件备份 以及 padavan编译模板
   |   |-- public        # 公共的修改文件
+  |-- screenshots       # 效果目录
 ```
 
 ## [编译结果欣赏图](./screenshots/readme.md)
