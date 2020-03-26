@@ -6,7 +6,7 @@
 
 ## Should
 
-1. 设备有关参数见 public.h 或者自定义的 sh
+1. 设备有关参数见 public.sh 或者自定义的 sh
 2. 编译支持同时多个设备编译，padavan有些设备编译比较快
 3. 版本号自动根据当天日期实现更改
 4. 拷贝模板里面的文件修改模板默认配置
@@ -90,10 +90,6 @@
 | [adbyby plus+][adb]        | CONFIG_FIRMWARE_INCLUDE_DNSFORWARDER |
 | [smartdns][kp]             | CONFIG_FIRMWARE_INCLUDE_SMARTDNS     |
 | [smartdns-二进制文件][adg]   | CONFIG_FIRMWARE_INCLUDE_SMARTDNSBIN  |
-
-echo "CONFIG_FIRMWARE_INCLUDE_DNSFORWARDER=y" >> .config # DNS-FORWARDER
-echo "CONFIG_FIRMWARE_INCLUDE_SMARTDNS=y" >> .config # smartdns
-echo "CONFIG_FIRMWARE_INCLUDE_SMARTDNSBIN=y" >> .config # smartdns 二进制文件
 
 > 备注
 
