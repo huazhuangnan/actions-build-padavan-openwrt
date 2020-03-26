@@ -34,6 +34,8 @@
 - fork 到自己仓库后(按需修改配置文件)然后点击 star (星标开始全部编译)；依赖这句判断:`github.event.repository.owner.id == github.event.sender.id`
 - 文件打包完会在action的任务里面
 
+- [具体下载图示](./screenshots/readme.md)
+
 ### 定时编译
 
 - 定时编译方法 [GitHub官方文档](https://help.github.com/en/actions/reference/events-that-trigger-workflows#scheduled-events-schedule)
