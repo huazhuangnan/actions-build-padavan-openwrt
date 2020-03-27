@@ -33,9 +33,9 @@ sed -i "s/FIRMWARE_BUILDS_REV=[0-9]*/FIRMWARE_BUILDS_REV=$version_time/g" ./vers
 # Default
 sed -i '/CONFIG_FIRMWARE_INCLUDE_DROPBEAR/d' .config            # 删除配置项 dropbear SSH
 sed -i '/CONFIG_FIRMWARE_INCLUDE_DROPBEAR_FAST_CODE/d' .config  # 删除配置项 dropbear symmetrica
-sed -i '/CONFIG_FIRMWARE_INCLUDE_DROPBEAR_FAST_CODE/d' .config  # 删除配置项 OpenSSH 
-sed -i "/CONFIG_FIRMWARE_INCLUDE_DDNS_SSL/d"  .config           #  HTTPS support for DDNS client
-sed -i "/CONFIG_FIRMWARE_INCLUDE_HTTPS/d"  .config              #  HTTPS support
+sed -i '/CONFIG_FIRMWARE_INCLUDE_OPENSSH/d' .config             # 删除配置项 OpenSSH 
+sed -i "/CONFIG_FIRMWARE_INCLUDE_DDNS_SSL/d"  .config           # HTTPS support for DDNS client
+sed -i "/CONFIG_FIRMWARE_INCLUDE_HTTPS/d"  .config              # HTTPS support
 
 # C大
 sed -i '/CONFIG_FIRMWARE_INCLUDE_MENTOHUST/d' .config    # 删除配置项 MENTOHUST
