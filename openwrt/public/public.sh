@@ -37,7 +37,7 @@ echo '添加主题argon'
 git clone $theme_argon package/lean/luci-theme-argon-mc
 rm -rf package/lean/luci-theme-argon-mc/screenshot
 rm -rf package/lean/luci-theme-argon-mc/README.md
-
+rm -rf package-temp
 echo 'CONFIG_PACKAGE_luci-theme-argon-mc=y' >> .config
 
 echo '添加OpenClash'
