@@ -7,7 +7,8 @@ utc_name='Asia\/Shanghai'   # 时区
 delete_bootstrap=true       # 是否删除默认主题 true 、false
 default_theme='argon_mc1'   # 默认主题 结合主题文件夹名字 
 theme_argon='https://github.com/sypopo/luci-theme-argon-mc.git'  # 主题地址
-openClash_url='https://github.com/vernesong/OpenClash.git'      # OpenClash包地址 
+openClash_url='https://github.com/vernesong/OpenClash.git'       # OpenClash包地址 
+lienol_url='https://github.com/Lienol/openwrt-package.git'       # Lienol 包地址
 # 命令
 # echo "修改机器名称"
 # sed -i "s/OpenWrt/$device_name/g" package/base-files/files/bin/config_generate
@@ -39,12 +40,27 @@ rm -rf package/lean/luci-theme-argon-mc/README.md
 
 echo 'CONFIG_PACKAGE_luci-theme-argon-mc=y' >> .config
 
-
 echo '添加OpenClash'
 mkdir package-temp
 git clone $openClash_url package-temp
-mv package-temp/luci-app-openclash package/lean/
-rm -rf package-temp
+mv -f package-temp/luci-app-openclash package/lean/
+
 #  OpenClash
 echo 'CONFIG_PACKAGE_luci-app-openclash=y' >> .config
 echo 'CONFIG_PACKAGE_luci-i18n-openclash-zh-cn=y'  >> .config
+
+echo '添加Lienol包'
+rm -rf package-temp/*
+git clone $lienol_url package-temp
+mv -f package-temp/lienol/*  package/lean/
+
+echo '添加Passwall'
+echo 'CONFIG_PACKAGE_luci-app-passwall=y' >> .config
+echo 'CONFIG_PACKAGE_luci-app-passwall_INCLUDE_Shadowsocks=y' >> .config
+echo 'CONFIG_PACKAGE_luci-app-passwall_INCLUDE_Trojan=y' >> .config
+echo 'CONFIG_PACKAGE_luci-app-passwall_INCLUDE_simple-obfs=y' >> .config
+echo 'CONFIG_PACKAGE_luci-app-passwall_INCLUDE_v2ray-plugin=y' >> .config
+echo 'CONFIG_PACKAGE_luci-i18n-passwall-zh-cn=y'  >> .config
+
+echo '删除下载缓存'
+rm -rf package-temp

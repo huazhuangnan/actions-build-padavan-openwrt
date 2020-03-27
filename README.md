@@ -92,7 +92,7 @@
 
 - [openwrt-OpenClash](https://github.com/vernesong/OpenClash) @vernesong
 
-- [openwrt-packages 包](https://github.com/kenzok8/openwrt-packages) @kenzok8
+- [openwrt-packages 包](https://github.com/Lienol/openwrt-package.git) @Lienol
 
 - [openwrt 插件配着说明参考恩山](https://www.right.com.cn/forum/thread-344825-1-1.html) ©xtwz
 
