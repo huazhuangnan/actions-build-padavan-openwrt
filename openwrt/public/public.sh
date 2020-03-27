@@ -52,9 +52,11 @@ echo 'CONFIG_PACKAGE_luci-i18n-openclash-zh-cn=y'  >> .config
 echo '添加Lienol包'
 rm -rf package-temp
 git clone $lienol_url package-temp
-mv -f package-temp/lienol/*  package/lean/
+
 
 echo '添加Passwall'
+mkdir package/lean/luci-app-passwall
+mv -f package-temp/lienol/luci-app-passwall  package/lean/luci-app-passwall
 echo 'CONFIG_PACKAGE_luci-app-passwall=y' >> .config
 echo 'CONFIG_PACKAGE_luci-app-passwall_INCLUDE_Shadowsocks=y' >> .config
 echo 'CONFIG_PACKAGE_luci-app-passwall_INCLUDE_Trojan=y' >> .config
