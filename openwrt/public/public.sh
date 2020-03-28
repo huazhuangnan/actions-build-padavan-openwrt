@@ -41,7 +41,6 @@ rm -rf package-temp
 echo 'CONFIG_PACKAGE_luci-theme-argon-mc=y' >> .config
 
 echo '添加OpenClash'
-mkdir package-temp
 git clone $openClash_url package-temp
 mv -f package-temp/luci-app-openclash package/lean/
 

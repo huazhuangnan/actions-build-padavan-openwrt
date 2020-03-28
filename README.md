@@ -7,13 +7,13 @@
   - NEWIFI3(新三，按我的参数编译大概28-35分钟，~25.5mb，集成了v2二进制文件和frp所以大)
   - G-DOCK(竞斗云 2.0，按我的参数编译大概3小时10分钟，~52mb(ubi包),ssp,openClash,passwall等)
   - 编译好的固件最好双清或者breed，opboot，uboot，清除后刷入，防止残余
-  - 默认参数看对应sh文件
+  - 默认参数看设备或者固件对应sh文件
 
 - 固件按理通用编译，但是还需测试，目前测试了的有，coolsnowwolf(雕大)的 openwrt(还集成了Lienol的包和openclash，在public.sh里面)，chongshengB(C大)的 padavan
 
 - 特别说明，如果不需要编译某个固件删除相应的 yml 文件即可，添加请仔细阅读有关固件的文档
 
-- 如果有啥问题欢迎提交 [Lssues](./issues) 反馈或者TG:[https://t.me/huazhuangnan](https://t.me/huazhuangnan)邮箱：huazhuangnan@foxmail.com
+- 如果有啥问题欢迎提交 [Lssues](https://github.com/HuaZhuangNan/actions-build-padavan-openwrt/issues) 反馈或者TG:[https://t.me/huazhuangnan](https://t.me/huazhuangnan)邮箱：huazhuangnan@foxmail.com
 
 - 历史自编译网盘地址：[https://pan.baidu.com/s/1JM3bcyOBvK6yx\_-B_IaQrA](https://pan.baidu.com/s/1JM3bcyOBvK6yx_-B_IaQrA);提取码：**7a0u**
 
@@ -33,7 +33,7 @@
 
 - fork 到自己仓库后(按需修改配置文件)然后点击 star (星标开始全部编译)；依赖这句判断:`github.event.repository.owner.id == github.event.sender.id`
 - 文件打包完会在action的任务里面
-
+- [Action下载](https://github.com/HuaZhuangNan/actions-build-padavan-openwrt/actions)
 - [具体下载图示](./screenshots/readme.md)
 
 ### 定时编译
