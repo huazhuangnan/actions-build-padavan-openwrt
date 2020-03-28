@@ -5,15 +5,15 @@
 - 目前本人手上只有这几个设备，所以只测试这几个
   - PSG1218(k2，超频600，按我的参数编译16-22分钟，~7.07mb)
   - NEWIFI3(新三，按我的参数编译大概28-35分钟，~25.5mb，集成了v2二进制文件和frp所以大)
-  - G-DOCK(竞斗云 2.0，按我的参数编译大概3小时10分钟，~50mb(ubi包),openClash等)
+  - G-DOCK(竞斗云 2.0，按我的参数编译大概3小时10分钟，~52mb(ubi包),ssp,openClash,passwall等)
   - 编译好的固件最好双清或者breed，opboot，uboot，清除后刷入，防止残余
   - 默认参数看对应sh文件
 
-- 固件按理通用编译，但是还需测试，目前测试了的有，coolsnowwolf(雕大)的 openwrt，chongshengB(C大)的 padavan
+- 固件按理通用编译，但是还需测试，目前测试了的有，coolsnowwolf(雕大)的 openwrt(还集成了Lienol的包和openclash，在public.sh里面)，chongshengB(C大)的 padavan
 
 - 特别说明，如果不需要编译某个固件删除相应的 yml 文件即可，添加请仔细阅读有关固件的文档
 
-- 如果有啥问题欢迎提交**Lssues**反馈或者TG:[https://t.me/huazhuangnan](https://t.me/huazhuangnan)邮箱：huazhuangnan@foxmail.com
+- 如果有啥问题欢迎提交 [Lssues](./issues) 反馈或者TG:[https://t.me/huazhuangnan](https://t.me/huazhuangnan)邮箱：huazhuangnan@foxmail.com
 
 - 历史自编译网盘地址：[https://pan.baidu.com/s/1JM3bcyOBvK6yx\_-B_IaQrA](https://pan.baidu.com/s/1JM3bcyOBvK6yx_-B_IaQrA);提取码：**7a0u**
 

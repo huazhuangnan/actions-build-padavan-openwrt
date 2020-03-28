@@ -62,7 +62,13 @@ echo 'CONFIG_PACKAGE_luci-app-passwall_INCLUDE_Shadowsocks=y' >> .config
 echo 'CONFIG_PACKAGE_luci-app-passwall_INCLUDE_Trojan=y' >> .config
 echo 'CONFIG_PACKAGE_luci-app-passwall_INCLUDE_simple-obfs=y' >> .config
 echo 'CONFIG_PACKAGE_luci-app-passwall_INCLUDE_v2ray-plugin=y' >> .config
+echo 'CONFIG_PACKAGE_luci-app-passwall_INCLUDE_Brook=y' >> .config
+echo 'CONFIG_PACKAGE_luci-app-passwall_INCLUDE_kcptun=y' >> .config
 echo 'CONFIG_PACKAGE_luci-i18n-passwall-zh-cn=y'  >> .config
+
+echo '添加filebrowser'
+echo 'CONFIG_PACKAGE_luci-app-filebrowser=y' >> .config
+echo 'CONFIG_PACKAGE_luci-i18n-filebrowser-zh-cn=y'  >> .config
 
 echo '删除下载缓存'
 rm -rf package-temp

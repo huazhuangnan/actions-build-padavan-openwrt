@@ -56,7 +56,6 @@ jobs:
         [ -f $BASE_PATH/$PUBLIC_PATH/$PUBLIC_SH ] && cp -f $BASE_PATH/$PUBLIC_PATH/$PUBLIC_SH $WORK_PATH
         [ -f $BASE_PATH/$T_NAME/$T_NAME.sh ] && cp -f $BASE_PATH/$T_NAME/$T_NAME.sh $WORK_PATH
         cd $WORK_PATH
-        ls -l
         echo "执行${PUBLIC_SH}"
         chmod +x ./$PUBLIC_SH
         sudo ./$PUBLIC_SH
