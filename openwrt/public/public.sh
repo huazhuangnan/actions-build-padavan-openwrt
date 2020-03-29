@@ -8,6 +8,7 @@ delete_bootstrap=true       # 是否删除默认主题 true 、false
 default_theme='argon_mc1'   # 默认主题 结合主题文件夹名字 
 theme_argon='https://github.com/sypopo/luci-theme-argon-mc.git'  # 主题地址
 openClash_url='https://github.com/vernesong/OpenClash.git'       # OpenClash包地址 
+# adguardhome_url='https://github.com/rufengsuixing/luci-app-adguardhome.git' # adguardhome 包地址
 lienol_url='https://github.com/Lienol/openwrt-package.git'       # Lienol 包地址
 # 命令
 # echo "修改机器名称"
@@ -54,7 +55,6 @@ git clone $lienol_url package-temp
 rm -rf package-temp/README.md
 mv -f package-temp/* package
 
-
 echo '添加Passwall'
 echo 'CONFIG_PACKAGE_luci-app-passwall=y' >> .config
 echo 'CONFIG_PACKAGE_luci-app-passwall_INCLUDE_Shadowsocks=y' >> .config
@@ -68,6 +68,11 @@ echo 'CONFIG_PACKAGE_luci-i18n-passwall-zh-cn=y'  >> .config
 echo '添加filebrowser'
 echo 'CONFIG_PACKAGE_luci-app-filebrowser=y' >> .config
 echo 'CONFIG_PACKAGE_luci-i18n-filebrowser-zh-cn=y'  >> .config
+
+# echo '添加adguardhome'
+# git clone $adguardhome_url package/lean/luci-app-adguardhome
+# echo 'CONFIG_PACKAGE_luci-app-adguardhome=y' >> .config
+# echo 'CONFIG_PACKAGE_luci-i18n-adguardhome-zh-cn=y'  >> .config
 
 echo '删除下载缓存'
 rm -rf package-temp
