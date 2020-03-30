@@ -4,6 +4,8 @@
 # # # # # # # # # # #
 name: OpenWrt CI G-DOCK
 on:
+  schedule:
+    - cron: '0 17 * * *'               # 每天国际时间17点，北京时间1点执行(北京+8)
   watch:
     types: [started]
 env:
