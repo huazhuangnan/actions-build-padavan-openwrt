@@ -1,4 +1,4 @@
-# GitHub Action 学习实例 - 自动编译 padavan和 openWrt
+# GitHub Action 学习实例 - 自动编译 padavan 和 openWrt
 
 ## 前言
 
@@ -62,6 +62,8 @@
 
 > - name 自动构建的名字
 > - on 触发条件
+>   - schedule:
+>     - cron: '0 17 * * *'    每天国际时间17点，北京时间1点执行(北京+8)
 >   - watch 监视
 >     - type: started 类型：点击了星标
 >
@@ -88,13 +90,17 @@
 
 - [openwrt 构建参考](https://github.com/ljk4160/GDOCK) © ljk4160
 
-- [openwrt 主题](https://github.com/sypopo/luci-theme-argon-mc) @sypopo
+- [openwrt 主题](https://github.com/sypopo/luci-theme-argon-mc) © sypopo
 
-- [openwrt-OpenClash](https://github.com/vernesong/OpenClash) @vernesong
+- [openwrt-OpenClash](https://github.com/vernesong/OpenClash) © vernesong
 
-- [openwrt-packages 包](https://github.com/Lienol/openwrt-package.git) @Lienol
+- [openwrt-packages 包](https://github.com/Lienol/openwrt-package) © Lienol
 
-- [openwrt 插件配置参考恩山](https://www.right.com.cn/forum/thread-344825-1-1.html) ©xtwz
+- [adguardhome 插件](https://github.com/rufengsuixing/luci-app-adguardhome)  © rufengsuixing
+
+- [Hello Word 插件](https://github.com/Leo-Jo-My/luci-app-vssr) © Leo-Jo-My
+
+- [openwrt 插件配置参考恩山](https://www.right.com.cn/forum/thread-344825-1-1.html) © xtwz
 
 - [padavan 源码](https://github.com/chongshengB/rt-n56u) © chongshengB
 

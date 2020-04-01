@@ -8,8 +8,9 @@ delete_bootstrap=true       # 是否删除默认主题 true 、false
 default_theme='argon_mc1'   # 默认主题 结合主题文件夹名字 
 theme_argon='https://github.com/sypopo/luci-theme-argon-mc.git'  # 主题地址
 openClash_url='https://github.com/vernesong/OpenClash.git'       # OpenClash包地址 
-# adguardhome_url='https://github.com/rufengsuixing/luci-app-adguardhome.git' # adguardhome 包地址
+adguardhome_url='https://github.com/rufengsuixing/luci-app-adguardhome.git' # adguardhome 包地址
 lienol_url='https://github.com/Lienol/openwrt-package.git'       # Lienol 包地址
+vssr_url='https://github.com/Leo-Jo-My/luci-app-vssr.git'        # vssr地址
 # 命令
 # echo "修改机器名称"
 # sed -i "s/OpenWrt/$device_name/g" package/base-files/files/bin/config_generate
@@ -73,6 +74,11 @@ echo 'CONFIG_PACKAGE_luci-i18n-filebrowser-zh-cn=y'  >> .config
 # git clone $adguardhome_url package/lean/luci-app-adguardhome
 # echo 'CONFIG_PACKAGE_luci-app-adguardhome=y' >> .config
 # echo 'CONFIG_PACKAGE_luci-i18n-adguardhome-zh-cn=y'  >> .config
+
+echo '添加HelloWord,并使用包默认的配置'
+git clone $vssr_url package/lean/luci-app-vssr
+echo 'CONFIG_PACKAGE_luci-app-vssr=y' >> .config
+echo 'CONFIG_PACKAGE_luci-i18n-vssr-zh-cn=y'  >> .config
 
 echo '删除下载缓存'
 rm -rf package-temp
