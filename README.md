@@ -60,7 +60,7 @@ schedule:                 # 时间表
 push:                     # push 操作
   branches:               # 分支
     - master              # 主分支
-  path:                   # 路径
+  paths:                   # 路径
     - padavan/*           # 监听padavan目录下所有文件的push操作
 ```
 

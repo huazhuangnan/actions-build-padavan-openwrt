@@ -9,7 +9,7 @@ on:
   # push:                               # push 操作
   #   branches:                         # 分支
   #     - master                        # 主分支
-  #   path:                             # 路径
+  #   paths:                             # 路径
   #     - openwrt/*                     # 监听openwrt目录下所有文件的push操作
   watch:                                # 监视操作
     types: [started]                    # 点击 star 之后
