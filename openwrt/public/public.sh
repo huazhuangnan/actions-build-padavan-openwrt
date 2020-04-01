@@ -10,6 +10,7 @@ theme_argon='https://github.com/sypopo/luci-theme-argon-mc.git'  # 主题地址
 openClash_url='https://github.com/vernesong/OpenClash.git'       # OpenClash包地址 
 adguardhome_url='https://github.com/rufengsuixing/luci-app-adguardhome.git' # adguardhome 包地址
 lienol_url='https://github.com/Lienol/openwrt-package.git'       # Lienol 包地址
+vssr_url_rely='https://github.com/Leo-Jo-My/my.git'              # vssr 依赖
 vssr_url='https://github.com/Leo-Jo-My/luci-app-vssr.git'        # vssr地址
 # 命令
 # echo "修改机器名称"
@@ -76,6 +77,7 @@ echo 'CONFIG_PACKAGE_luci-i18n-filebrowser-zh-cn=y'  >> .config
 # echo 'CONFIG_PACKAGE_luci-i18n-adguardhome-zh-cn=y'  >> .config
 
 echo '添加HelloWord,并使用包默认的配置'
+git clone $vssr_url_rely package/Leo-Jo-My
 git clone $vssr_url package/lean/luci-app-vssr
 echo 'CONFIG_PACKAGE_luci-app-vssr=y' >> .config
 echo 'CONFIG_PACKAGE_luci-i18n-vssr-zh-cn=y'  >> .config
