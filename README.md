@@ -39,7 +39,24 @@
 ### 定时编译
 
 - 定时编译方法 [GitHub官方文档](https://help.github.com/en/actions/reference/events-that-trigger-workflows#scheduled-events-schedule)
-- 编译模板yml文件中有个每天北京时间1点编译的例子
+- 编译模板yml文件中有个每天北京时间凌晨3点编译的例子
+
+```yml
+  schedule:                          # 时间表
+    - cron: '0 19 * * *'             # 每天国际时间19点，北京时间3点执行(北京+8)
+```
+
+### push 编译
+
+- 编译模板yml里面也有例子
+
+```yml
+  push:                             # push 操作
+    branches:                       # 分支
+      - master                      # 主分支
+      path:                         # 路径
+        - padavan/*                 # 监听padavan目录下所有文件的push操作
+```
 
 ## 目录说明
 
@@ -63,7 +80,7 @@
 > - name 自动构建的名字
 > - on 触发条件
 >   - schedule:
->     - cron: '0 17 * * *'    每天国际时间17点，北京时间1点执行(北京+8)
+>     - cron: '0 19 * * *'    每天国际时间19点，北京时间3点执行(北京+8)
 >   - watch 监视
 >     - type: started 类型：点击了星标
 >

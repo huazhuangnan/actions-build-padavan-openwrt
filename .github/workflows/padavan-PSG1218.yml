@@ -4,6 +4,13 @@
 # # # # # # # # # # #
 name: Padavan CI PSG1218
 on:
+  # schedule:
+  #   - cron: '0 19 * * *'             # 每天国际时间19点，北京时间3点执行(北京+8)
+  push:
+    branches:
+      - master
+      path:
+        - padavan/*                 # 监听padavan目录的push操作
   watch:
     types: [started]
 env:
