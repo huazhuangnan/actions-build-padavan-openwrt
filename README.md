@@ -3,25 +3,26 @@
 ## 前言
 
 - 目前本人手上只有这几个设备，所以只测试这几个
-  - PSG1218(k2，超频600，按我的参数编译16-22分钟，~7.07mb)
-  - NEWIFI3(新三，按我的参数编译大概28-35分钟，~25.5mb，集成了v2二进制文件和frp所以大)
-  - G-DOCK(竞斗云 2.0，按我的参数编译大概3小时30分钟，~57mb(ubi包),ssp,openClash,passwall,hellword等)
-  - 编译好的固件最好双清或者breed，opboot，uboot，清除后刷入，防止残余
-  - 默认参数看设备或者固件对应sh文件
 
-- 固件按理通用编译，但是还需测试，目前测试了的有，coolsnowwolf(雕大)的 openwrt(还集成了Lienol的包和openclash，在public.sh里面)，chongshengB(C大)的 padavan
+  - PSG1218(k2，超频 600，按我的参数编译 16-22 分钟，~7.07mb)
+  - NEWIFI3(新三，按我的参数编译大概 28-35 分钟，~25.5mb，集成了 v2 二进制文件和 frp 所以大)
+  - G-DOCK(竞斗云 2.0，按我的参数编译大概 3 小时 30 分钟，~57mb(ubi 包),ssp,openClash,passwall,hellword 等)
+  - 编译好的固件最好双清或者 breed，opboot，uboot，清除后刷入，防止残余
+  - 默认参数看设备或者固件对应 sh 文件
+
+- 固件按理通用编译，但是还需测试，目前测试了的有，coolsnowwolf(雕大)的 openwrt(还集成了 Lienol 的包和 openclash，在 public.sh 里面)，chongshengB(C 大)的 padavan
 
 - 特别说明，如果不需要编译某个固件删除相应的 yml 文件即可，添加请仔细阅读有关固件的文档
 
-- 如果有啥问题欢迎提交 [Lssues](https://github.com/HuaZhuangNan/actions-build-padavan-openwrt/issues) 反馈或者TG:[https://t.me/huazhuangnan](https://t.me/huazhuangnan)邮箱：huazhuangnan@foxmail.com
+- 如果有啥问题欢迎提交 [Lssues](https://github.com/HuaZhuangNan/actions-build-padavan-openwrt/issues) 反馈或者 TG:[https://t.me/huazhuangnan](https://t.me/huazhuangnan)邮箱：huazhuangnan@foxmail.com
 
 - 历史自编译网盘地址：[https://pan.baidu.com/s/1JM3bcyOBvK6yx\_-B_IaQrA](https://pan.baidu.com/s/1JM3bcyOBvK6yx_-B_IaQrA);提取码：**7a0u**
 
 - 恩山: [https://www.right.com.cn/forum/?567122](https://www.right.com.cn/forum/?567122)
 
-- B站(有视频): [https://space.bilibili.com/436465779](https://space.bilibili.com/436465779)
+- B 站(有视频): [https://space.bilibili.com/436465779](https://space.bilibili.com/436465779)
 
-- 整理编写不易，喜欢给个 star ，本人主学 WEB，大专，现读大三找实习中，有啥好工作引荐下呗；
+- 整理编写不易，喜欢的话给个 **star** ，本人主学 WEB，大专，现读大三找实习中，有啥好工作引荐下呗；
 
 ### [openwrt 单独参数及功能说明](/openwrt/readme.md)
 
@@ -31,31 +32,36 @@
 
 ### 默认编译
 
-- fork 到自己仓库后(按需修改配置文件)然后点击 star (星标开始全部编译)；依赖这句判断:`github.event.repository.owner.id == github.event.sender.id`
-- 文件打包完会在action的任务里面
-- [Action下载](https://github.com/HuaZhuangNan/actions-build-padavan-openwrt/actions)
+- **Fork** 到自己仓库后(按需修改配置文件)然后点击 **star** (星标开始全部编译)；依赖这句判断:`github.event.repository.owner.id == github.event.sender.id`
+- 文件打包完会在 action 的任务里面
+- [Action 下载](https://github.com/HuaZhuangNan/actions-build-padavan-openwrt/actions)
 - [具体下载图示](./screenshots/readme.md)
+
+```yml
+watch:                     # 监视操作
+    types: started         # 点击 star 之后
+```
 
 ### 定时编译
 
-- 定时编译方法 [GitHub官方文档](https://help.github.com/en/actions/reference/events-that-trigger-workflows#scheduled-events-schedule)
-- 编译模板yml文件中有个每天北京时间凌晨3点编译的例子
+- 定时编译方法 [GitHub 官方文档](https://help.github.com/en/actions/reference/events-that-trigger-workflows#scheduled-events-schedule)
+- 编译模板 yml 文件中有个每天北京时间凌晨 3 点编译的例子
 
 ```yml
-  schedule:                          # 时间表
-    - cron: '0 19 * * *'             # 每天国际时间19点，北京时间3点执行(北京+8)
+schedule:                 # 时间表
+  - cron: "0 19 * * *"    # 每天国际时间19点，北京时间3点执行(北京+8)
 ```
 
 ### push 编译
 
-- 编译模板yml里面也有例子
+- 编译模板 yml 里面也有例子
 
 ```yml
-  push:                             # push 操作
-    branches:                       # 分支
-      - master                      # 主分支
-      path:                         # 路径
-        - padavan/*                 # 监听padavan目录下所有文件的push操作
+push:                     # push 操作
+  branches:               # 分支
+    - master              # 主分支
+  path:                   # 路径
+    - padavan/*           # 监听padavan目录下所有文件的push操作
 ```
 
 ## 目录说明
@@ -79,10 +85,11 @@
 
 > - name 自动构建的名字
 > - on 触发条件
->   - schedule:
->     - cron: '0 19 * * *'    每天国际时间19点，北京时间3点执行(北京+8)
->   - watch 监视
->     - type: started 类型：点击了星标
+>
+>   - schedule:                 # 时间表
+>     - cron: '0 19 \* \* \*'   # 每天国际时间 19 点，北京时间凌晨 3 点执行(北京+8)
+>   - watch                     # 监视
+>     - type: started           # 类型：点击了星标
 >
 > - env 环境变量
 > - jobs 任务
@@ -113,7 +120,7 @@
 
 - [openwrt-packages 包](https://github.com/Lienol/openwrt-package) © Lienol
 
-- [adguardhome 插件](https://github.com/rufengsuixing/luci-app-adguardhome)  © rufengsuixing
+- [adguardhome 插件](https://github.com/rufengsuixing/luci-app-adguardhome) © rufengsuixing
 
 - [Hello Word 插件](https://github.com/Leo-Jo-My/luci-app-vssr) © Leo-Jo-My
 

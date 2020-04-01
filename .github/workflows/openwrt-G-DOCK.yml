@@ -4,15 +4,15 @@
 # # # # # # # # # # #
 name: OpenWrt CI G-DOCK
 on:
-  schedule:
-    - cron: '0 19 * * *'             # 每天国际时间19点，北京时间3点执行(北京+8)
-  # push:
-  #   branches:
-  #     - master
-  #     path:
-  #       - openwrt/*                 # 监听padavan目录的push操作
-  watch:
-    types: [started]
+  schedule:                             # 时间表
+     - cron: '0 19 * * *'               # 每天国际时间19点，北京时间凌晨3点执行(北京+8)
+  # push:                               # push 操作
+  #   branches:                         # 分支
+  #     - master                        # 主分支
+  #   path:                             # 路径
+  #     - openwrt/*                     # 监听openwrt目录下所有文件的push操作
+  watch:                                # 监视操作
+    types: [started]                    # 点击 star 之后
 env:
   T_NAME: "G-DOCK"                     # 设备名字 (op编译慢所以直接单个的编译) 
   BASE_PATH: openwrt                   # 基础目录
