@@ -122,7 +122,7 @@ push:                     # push 操作
 
 - [adguardhome 插件](https://github.com/rufengsuixing/luci-app-adguardhome) © rufengsuixing
 
-- [Hello Word 插件](https://github.com/Leo-Jo-My/luci-app-vssr) © Leo-Jo-My
+- [Hello Word 插件](https://github.com/jerrykuku/luci-app-vssr) © jerrykuku
 
 - [openwrt 插件配置参考恩山](https://www.right.com.cn/forum/thread-344825-1-1.html) © xtwz
 

@@ -10,8 +10,8 @@ theme_argon='https://github.com/sypopo/luci-theme-argon-mc.git'  # 主题地址
 openClash_url='https://github.com/vernesong/OpenClash.git'       # OpenClash包地址 
 adguardhome_url='https://github.com/rufengsuixing/luci-app-adguardhome.git' # adguardhome 包地址
 lienol_url='https://github.com/Lienol/openwrt-package.git'       # Lienol 包地址
-vssr_url_rely='https://github.com/Leo-Jo-My/my.git'              # vssr 依赖
-vssr_url='https://github.com/Leo-Jo-My/luci-app-vssr.git'        # vssr地址
+vssr_url_rely='https://github.com/jerrykuku/lua-maxminddb.git'   # vssr lua-maxminddb依赖
+vssr_url='https://github.com/jerrykuku/luci-app-vssr.git'        # vssr地址
 # 命令
 # echo "修改机器名称"
 # sed -i "s/OpenWrt/$device_name/g" package/base-files/files/bin/config_generate
@@ -55,7 +55,7 @@ echo '添加Lienol包'
 rm -rf package-temp
 git clone $lienol_url package-temp
 rm -rf package-temp/README.md
-mv -f package-temp/* package
+mv -f package-temp/* packa
 
 echo '添加Passwall'
 echo 'CONFIG_PACKAGE_luci-app-passwall=y' >> .config
@@ -77,10 +77,9 @@ echo 'CONFIG_PACKAGE_luci-i18n-filebrowser-zh-cn=y'  >> .config
 # echo 'CONFIG_PACKAGE_luci-i18n-adguardhome-zh-cn=y'  >> .config
 
 echo '添加HelloWord,并使用包默认的配置'
-git clone $vssr_url_rely package/Leo-Jo-My
+git clone $vssr_url_rely package/lean/lua-maxminddb
 git clone $vssr_url package/lean/luci-app-vssr
 echo 'CONFIG_PACKAGE_luci-app-vssr=y' >> .config
-echo 'CONFIG_PACKAGE_luci-app-vssr_INCLUDE_dnscrypt_proxy=y' >> .config
 echo 'CONFIG_PACKAGE_luci-i18n-vssr-zh-cn=y'  >> .config
 
 echo '删除下载缓存'
