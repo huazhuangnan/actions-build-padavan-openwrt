@@ -38,24 +38,17 @@ fi
 
 echo '添加主题argon'
 git clone $theme_argon package/lean/luci-theme-argon-mc
-rm -rf package/lean/luci-theme-argon-mc/screenshot
-rm -rf package/lean/luci-theme-argon-mc/README.md
-rm -rf package-temp
 echo 'CONFIG_PACKAGE_luci-theme-argon-mc=y' >> .config
 
 echo '添加OpenClash'
-git clone $openClash_url package-temp
-mv -f package-temp/luci-app-openclash package/lean/
+git clone $openClash_url package/lean/luci-app-openclash 
 
 #  OpenClash
 echo 'CONFIG_PACKAGE_luci-app-openclash=y' >> .config
 echo 'CONFIG_PACKAGE_luci-i18n-openclash-zh-cn=y'  >> .config
 
 echo '添加Lienol包'
-rm -rf package-temp
-git clone $lienol_url package-temp
-rm -rf package-temp/README.md
-mv -f package-temp/* packa
+git clone $lienol_url package
 
 echo '添加Passwall'
 echo 'CONFIG_PACKAGE_luci-app-passwall=y' >> .config
@@ -81,6 +74,3 @@ echo 'CONFIG_PACKAGE_luci-i18n-filebrowser-zh-cn=y'  >> .config
 # git clone $vssr_url package/lean/luci-app-vssr
 # echo 'CONFIG_PACKAGE_luci-app-vssr=y' >> .config
 # echo 'CONFIG_PACKAGE_luci-i18n-vssr-zh-cn=y'  >> .config
-
-echo '删除下载缓存'
-rm -rf package-temp
