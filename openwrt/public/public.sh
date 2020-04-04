@@ -48,7 +48,7 @@ echo 'CONFIG_PACKAGE_luci-app-openclash=y' >> .config
 echo 'CONFIG_PACKAGE_luci-i18n-openclash-zh-cn=y'  >> .config
 
 echo '添加Lienol包'
-git clone $lienol_url package
+git clone $lienol_url package/Lienol
 
 echo '添加Passwall'
 echo 'CONFIG_PACKAGE_luci-app-passwall=y' >> .config
