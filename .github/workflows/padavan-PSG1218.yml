@@ -1,18 +1,20 @@
 # # # # # # # # # # #
 #  自动构建 PSG1218
-#     花妆男 
+#     花妆男
 # # # # # # # # # # #
 name: Padavan CI PSG1218
 on:
-  # schedule:                         # 时间表
-  #   - cron: '0 19 * * *'            # 每天国际时间19点，北京时间凌晨3点执行(北京+8)
-  # push:                               # push 操作
-  #   branches:                         # 分支
-  #     - master                        # 主分支
+  # schedule:                           # 时间表
+  #   - cron: '0 19 * * *'              # 每天国际时间19点，北京时间凌晨3点执行(北京+8)
+  push:                               # push 操作
+    branches:                         # 分支
+      - master                        # 主分支
   #   paths:                            # 路径
-  #     - padavan/*                     # 监听padavan目录下所有文件的push操作
-  watch:                                # 监视操作
-    types: [started]                    # 点击 star 之后
+  #     - openwrt/*                     # 监听openwrt目录下所有文件的push操作
+    paths:                            # 路径
+      - logs/k2.md                    # 监听logs目录下 k2.md 的push操作
+  # watch:                              # 监视操作
+  #   types: [started]                  # 点击 star 之后
 env:
   T_NAMES: "PSG1218"        # 设备名字数组
   BASE_PATH: padavan                # 基础目录
@@ -34,6 +36,11 @@ jobs:
       env:
         DEBIAN_FRONTEND: noninteractive  # 非交互模式
       run: |
+        sudo apt-get clean
+        cd /var/lib/apt
+        sudo mv lists lists.old
+        sudo mkdir -p lists/partial
+        sudo apt-get clean
         sudo apt-get update
         sudo apt-get -y install unzip libtool-bin curl cmake gperf gawk flex bison nano xxd \
         cpio git python-docutils gettext automake autopoint texinfo build-essential help2man \
@@ -83,7 +90,7 @@ jobs:
           sudo $WORK_PATH/$t_item.sh
         fi
         # 4. 清理构建
-        sudo ./clear_tree  
+        sudo ./clear_tree
         sudo ./build_firmware_bkye $t_item          # $t_item  是循环的子对象
         sudo mv -f images/*.trx ${WORK_PATH}/images/
         done

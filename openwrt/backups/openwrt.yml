@@ -9,15 +9,17 @@ on:
   # push:                               # push 操作
   #   branches:                         # 分支
   #     - master                        # 主分支
-  #   paths:                             # 路径
+  #   paths:                            # 路径
   #     - openwrt/*                     # 监听openwrt目录下所有文件的push操作
+  #   paths:                            # 路径
+  #     - logs/g-dock.md                # 监听logs目录下 g-dock.md 的push操作
   watch:                                # 监视操作
     types: [started]                    # 点击 star 之后
 env:
   T_NAME: "G-DOCK"                     # 设备名字 (op编译慢所以直接单个的编译) 
   BASE_PATH: openwrt                   # 基础目录
   PUBLIC_PATH: public                  # 公共目录
-  PUBLIC_SH: public.sh          # 公共执行文件
+  PUBLIC_SH: public.sh                 # 公共执行文件
   UPLOAD_BIN_DIR: true                 # 是否导出bin文件
   UPLOAD_FIRMWARE: true                # 是否导出固件
   CLONE_URL: https://github.com/coolsnowwolf/lede  # 地址
@@ -29,10 +31,10 @@ jobs:
     runs-on: ubuntu-18.04
     if: github.event.repository.owner.id == github.event.sender.id
     steps:
-    - name: Checkout Master               # 1.导入主分支
+    - name: Checkout Master                 # 1.导入主分支
       uses: actions/checkout@master
 
-    - name: Initialization Environment    # 2.初始化环境
+    - name: Initialization Environment      # 2.初始化环境
       env:
         DEBIAN_FRONTEND: noninteractive  
       run: |
@@ -44,15 +46,14 @@ jobs:
         sudo -E apt-get -y autoremove --purge
         sudo -E apt-get clean
         sudo timedatectl set-timezone 'Asia/Shanghai'  # 设置时区
-    - name: Clone Code                     # 3.拷贝代码
+    - name: Clone Code                       # 3.拷贝代码
       run: |
         git clone --depth=1 $CLONE_URL -b $CLONE_BRANCH $WORK_PATH
 
-    - name: Update Feeds                  # 4.下载Feeds  
+    - name: Update Feeds                     # 4.下载Feeds  
       run: |
         cd $WORK_PATH 
         ./scripts/feeds update -a
-        
 
     - name: Load Config And Install Feeds    # 5. 加载配置文件  并且安装 Feeds    
       run: |
@@ -71,7 +72,7 @@ jobs:
         fi
         ./scripts/feeds install -a
 
-    - name: Download  Package
+    - name: Download  Package                # 6.下载包
       run: |
         cd $WORK_PATH
         make defconfig
@@ -79,13 +80,13 @@ jobs:
         find dl -size -1024c -exec ls -l {} \;
         find dl -size -1024c -exec rm -f {} \;
 
-    - name: Build
+    - name: Build                            # 7. 构建
       run: |
         cd $WORK_PATH
         echo -e "$(nproc) thread compile"
         make -j$(nproc) || make -j1 V=s
 
-    - name: Organize Files
+    - name: Organize Files                   # 8. 整理编译结果
       if: success()
       run: |
         cd $WORK_PATH/bin/targets/*/*
@@ -94,14 +95,14 @@ jobs:
         echo "::set-env name=FIRMWARE::$PWD"                        # Firmware 路径
         echo "::set-env name=BIN_PATH::$WORK_PATH/bin"              # BIN 文件路径
 
-    - name: Upload Bin Directory
+    - name: Upload Bin Directory             # 9. 导出Bin目录
       uses: actions/upload-artifact@master
       if: env.UPLOAD_BIN_DIR == 'true' && success()
       with:
         name: OpenWrt-${{env.FILE_NAME}}-Bin
         path: ${{ env.BIN_PATH }}
 
-    - name: Upload Firmware Directory
+    - name: Upload Firmware Directory        # 10. 导出固件目录
       uses: actions/upload-artifact@master
       if: success()
       with:

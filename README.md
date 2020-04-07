@@ -6,9 +6,9 @@
 
   - PSG1218(k2，超频 600，按我的参数编译 16-22 分钟，~7.07mb)
   - NEWIFI3(新三，按我的参数编译大概 28-35 分钟，~25.5mb，集成了 v2 二进制文件和 frp 所以大)
-  - G-DOCK(竞斗云 2.0，按我的参数编译大概 3 小时 30 分钟，~57mb(ubi 包),ssp,openClash,passwall,hellword 等)
-  - 编译好的固件最好双清或者 breed，opboot，uboot，清除后刷入，防止残余
-  - 默认参数看设备或者固件对应 sh 文件
+  - G-DOCK(竞斗云 2.0，按我的参数编译大概 3 小时 30 分钟，~57mb(ubi 包),ssp,openClash,passwall,hellword(和ssp二选一) 等)
+  - 编译好的固件最好双清或者 breed，opboot，uboot，清除后刷入，防止修改了配置残余
+  - 有关参数看设备的配置文件、sh文件、padavan或者openwrt对应 public.sh 文件
 
 - 固件按理通用编译，但是还需测试，目前测试了的有，coolsnowwolf(雕大)的 openwrt(还集成了 Lienol 的包和 openclash，在 public.sh 里面)，chongshengB(C 大)的 padavan
 
@@ -22,37 +22,34 @@
 
 - B 站(有视频): [https://space.bilibili.com/436465779](https://space.bilibili.com/436465779)
 
-- 整理编写不易，喜欢的话给个 **star** ，本人主学 WEB，大专，现读大三找实习中，有啥好工作引荐下呗；
+- 整理编写不易，喜欢的话右上角给个 **star** 呗，本人主学 WEB，大专，现读大三找实习中，有啥好工作引荐下呗；
 
-### [openwrt 单独参数及功能说明](/openwrt/readme.md)
+## [openwrt 单独参数及功能说明](/openwrt/readme.md)
 
-### [padavan 单独参数及功能说明](/padavan/readme.md)
+## [padavan 单独参数及功能说明](/padavan/readme.md)
 
-## 编译方法
+## 下载编译完成固件
 
-### 默认编译
-
-- **Fork** 到自己仓库后(按需修改配置文件)然后点击 **star** (星标开始全部编译)；依赖这句判断:`github.event.repository.owner.id == github.event.sender.id`
-- 文件打包完会在 action 的任务里面
 - [Action 下载](https://github.com/HuaZhuangNan/actions-build-padavan-openwrt/actions)
 - [具体下载图示](./screenshots/readme.md)
 
-```yml
-watch:                     # 监视操作
-    types: started         # 点击 star 之后
-```
+## 更新日志
 
-### 定时编译
+- [PSG1218](./logs/k2.md)
+- [NEWIFI3](./logs/n3.md)
+- [G-DOCK2.0](./logs/g-dock.md)
 
-- 定时编译方法 [GitHub 官方文档](https://help.github.com/en/actions/reference/events-that-trigger-workflows#scheduled-events-schedule)
-- 编译模板 yml 文件中有个每天北京时间凌晨 3 点编译的例子
+## 编译方法(注：所有固件都是下载的，所以需要编译其他版本的yml去改连接和编译的配置就好)
 
-```yml
-schedule:                 # 时间表
-  - cron: "0 19 * * *"    # 每天国际时间19点，北京时间3点执行(北京+8)
-```
+- **Fork** 到自己仓库后(按需修改配置文件)然后点击 **star** (星标开始全部编译)；依赖这句判断:`github.event.repository.owner.id == github.event.sender.id`
+- 文件打包完会在 action 的任务里面
 
-### push 编译
+### 监听文件 `push`  编译（默认编译，需要其他方式，打开注释修改或自己添加就好）
+
+- 选择按log文件默认的原因
+  1. 方便查看管理
+  2. 防止多次的push多次编译
+  3. 防止不是自己点击 star 之后 Actions 还是会有显示
 
 - 编译模板 yml 里面也有例子
 
@@ -60,8 +57,27 @@ schedule:                 # 时间表
 push:                     # push 操作
   branches:               # 分支
     - master              # 主分支
-  paths:                   # 路径
-    - padavan/*           # 监听padavan目录下所有文件的push操作
+  # paths:                # 路径
+  #   - padavan/*         # 监听padavan目录下所有文件的push操作
+  paths:                  # 路径
+    - logs/k2.md          # 监听logs目录下 k2.md 的push操作 (默认)
+```
+
+### 星标 `star` 编译
+
+```yml
+watch:                     # 监视操作
+    types: started         # 点击 star 之后,可以写数组形式，具体可以参考官方文档
+```
+
+### 定时 `schedule` 编译
+
+- 定时编译方法 [GitHub 官方文档](https://help.github.com/en/actions/reference/events-that-trigger-workflows#scheduled-events-schedule)
+- 编译模板 yml 文件中有个每天北京时间凌晨 3 点编译的例子
+
+```yml
+schedule:                 # 时间表
+  - cron: "0 19 * * *"    # 每天国际时间 19 点，北京时间 3 点执行(北京+8)
 ```
 
 ## 目录说明
@@ -72,10 +88,10 @@ push:                     # push 操作
   |   |-- workfloms     # 存放 Action 的 YML文件
   |-- openwrt           # openwrt 有关
   |   |-- backups       # openwrt 文件备份 以及 openwrt 编译模板
-  |   |-- public        # 公共的修改文件
+  |   |-- public.sh      # 公共的修改执行文件
   |-- padavan           # padavan 有关
-  |   |-- backups       # padanvan文件备份 以及 padavan编译模板
-  |   |-- public        # 公共的修改文件
+  |   |-- backups       # padanvan文件备份 以及 padavan 编译模板
+  |   |-- public.sh     # 公共的修改执行文件
   |-- screenshots       # 效果目录
 ```
 
