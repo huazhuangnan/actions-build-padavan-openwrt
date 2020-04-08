@@ -1,6 +1,6 @@
 # # # # # # # # # # #
 # 自动构建 openWrt 模板
-#     花妆男 
+#     花妆男
 # # # # # # # # # # #
 name: OpenWrt CI Template
 on:
@@ -16,7 +16,7 @@ on:
   watch:                                # 监视操作
     types: [started]                    # 点击 star 之后
 env:
-  T_NAME: "G-DOCK"                     # 设备名字 (op编译慢所以直接单个的编译) 
+  T_NAME: "G-DOCK"                     # 设备名字 (op编译慢所以直接单个的编译)
   BASE_PATH: openwrt                   # 基础目录
   PUBLIC_PATH: public                  # 公共目录
   PUBLIC_SH: public.sh                 # 公共执行文件
@@ -36,26 +36,29 @@ jobs:
 
     - name: Initialization Environment      # 2.初始化环境
       env:
-        DEBIAN_FRONTEND: noninteractive  
+        DEBIAN_FRONTEND: noninteractive
       run: |
-        docker rmi `docker images -q`
-        sudo rm -rf /usr/share/dotnet /etc/mysql /etc/php /etc/apt/sources.list.d
-        sudo -E apt-get -y purge azure-cli ghc* zulu* hhvm llvm* firefox google* dotnet* powershell openjdk* mysql* php*
-        sudo -E apt-get update
-        sudo apt-get -y install build-essential asciidoc binutils bzip2 gawk gettext git libncurses5-dev libz-dev patch python3.5 unzip zlib1g-dev lib32gcc1 libc6-dev-i386 subversion flex uglifyjs git-core gcc-multilib p7zip p7zip-full msmtp libssl-dev texinfo libglib2.0-dev xmlto qemu-utils upx libelf-dev autoconf automake libtool autopoint device-tree-compiler g++-multilib
-        sudo -E apt-get -y autoremove --purge
+        # docker rmi `docker images -q`
+        # sudo rm -rf /usr/share/dotnet /etc/mysql /etc/php /etc/apt/sources.list.d
+        # sudo -E apt-get -y purge azure-cli ghc* zulu* hhvm llvm* firefox google* dotnet* powershell openjdk* mysql* php*
+        # sudo -E apt-get update
+        # sudo apt-get -y install build-essential asciidoc binutils bzip2 gawk gettext git libncurses5-dev libz-dev patch python3.5 unzip zlib1g-dev lib32gcc1 libc6-dev-i386 subversion flex uglifyjs git-core gcc-multilib p7zip p7zip-full msmtp libssl-dev texinfo libglib2.0-dev xmlto qemu-utils upx libelf-dev autoconf automake libtool autopoint device-tree-compiler g++-multilib
+        # sudo -E apt-get -y autoremove --purge
+        sudo apt-get update
+        sudo apt-get -y install build-essential asciidoc binutils bzip2 gawk gettext git libncurses5-dev libz-dev patch python3.5 unzip zlib1g-dev lib32gcc1 libc6-dev-i386 subversion flex uglifyjs git-core gcc-multilib p7zip p7zip-full msmtp libssl-dev texinfo libglib2.0-dev xmlto qemu-utils upx libelf-dev autoconf automake libtool autopoint device-tree-compiler g++-multilib antlr3 gperf
         sudo -E apt-get clean
+        df -h
         sudo timedatectl set-timezone 'Asia/Shanghai'  # 设置时区
     - name: Clone Code                       # 3.拷贝代码
       run: |
         git clone --depth=1 $CLONE_URL -b $CLONE_BRANCH $WORK_PATH
 
-    - name: Update Feeds                     # 4.下载Feeds  
+    - name: Update Feeds                     # 4.下载Feeds
       run: |
-        cd $WORK_PATH 
+        cd $WORK_PATH
         ./scripts/feeds update -a
 
-    - name: Load Config And Install Feeds    # 5. 加载配置文件  并且安装 Feeds    
+    - name: Load Config And Install Feeds    # 5. 加载配置文件  并且安装 Feeds
       run: |
         [ -f $BASE_PATH/$T_NAME/banner ] && cp -f $BASE_PATH/$T_NAME/banner $WORK_PATH/package/base-files/files/etc/banner
         [ -f $BASE_PATH/$T_NAME/.config ] && cp -f $BASE_PATH/$T_NAME/.config $WORK_PATH/.config
