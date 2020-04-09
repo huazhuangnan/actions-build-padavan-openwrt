@@ -18,6 +18,7 @@
 
 | 变量                               | 名字                                             |
 | --------------------------------- | -------------------------------------------------|
+| luci-app-music-remote-center      |   音乐远程中心                                     |
 | luci-app-accesscontrol            | 访问时间控制                                       |
 | luci-app-adbyby-plus              | 广告屏蔽大师 Plus +                                |
 | luci-app-arpbind                  | IP/MAC 绑定                                       |

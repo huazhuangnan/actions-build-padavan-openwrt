@@ -9,3 +9,4 @@
 
 1. 修复缺少依赖编译失败bug
 2. 测试修复
+3. 移除音乐远程中心(Music Remote Center)
