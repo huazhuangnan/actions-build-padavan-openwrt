@@ -77,8 +77,8 @@ echo 'CONFIG_PACKAGE_luci-i18n-filebrowser-zh-cn=y'  >> .config
 # echo 'CONFIG_PACKAGE_luci-i18n-vssr-zh-cn=y'  >> .config
 
 echo '添加OpenAppFilter过滤器'
-git clone $filter_url package/lede/OpenAppFilter
+git clone $filter_url package/OpenAppFilter
 echo 'CONFIG_PACKAGE_luci-app-oaf=y' >> .config
-echo 'CONFIG_PACKAGE_oaf=y' >> .config
+echo 'CONFIG_PACKAGE_kmod-oaf=y' >> .config
 echo 'CONFIG_PACKAGE_appfilter=y' >> .config
 echo 'CONFIG_PACKAGE_luci-i18n-oaf-zh-cn=y'  >> .config
