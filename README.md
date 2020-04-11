@@ -140,6 +140,8 @@ schedule:                 # 时间表
 
 - [Hello Word 插件](https://github.com/jerrykuku/luci-app-vssr) © jerrykuku
 
+- [OpenAppFilter 插件](https://github.com/destan19/OpenAppFilter) © destan19
+
 - [openwrt 插件配置参考恩山](https://www.right.com.cn/forum/thread-344825-1-1.html) © xtwz
 
 - [padavan 源码](https://github.com/chongshengB/rt-n56u) © chongshengB

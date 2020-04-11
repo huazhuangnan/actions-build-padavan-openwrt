@@ -11,6 +11,7 @@
 2. 测试修复
 3. 移除音乐远程中心(Music Remote Center)
 
-## 2020年4月10日
+## 2020年4月11日
 
 1. 移除webadmin
+2. 添加OpenAppFilter过滤器
