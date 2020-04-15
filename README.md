@@ -6,7 +6,7 @@
 
   - PSG1218(k2，超频 600，按我的参数编译 16-22 分钟，~7.07mb)
   - NEWIFI3(新三，按我的参数编译大概 28-35 分钟，~25.5mb，集成了 v2 二进制文件和 frp 所以大)
-  - G-DOCK(竞斗云 2.0，按我的参数编译大概 3 小时 30 分钟，~57mb(ubi 包),ssp,openClash,passwall,hellword(和ssp二选一) 等)
+  - G-DOCK(竞斗云 2.0，按我的参数编译大概 3 小时 30 分钟，~57mb(ubi 包),ssp,openClash,passwall,hellword(测试修复冲突版) 等)
   - 编译好的固件最好双清或者 breed，opboot，uboot，清除后刷入，防止修改了配置残余
   - 有关参数看设备的配置文件、sh文件、padavan或者openwrt对应 public.sh 文件
 
@@ -143,6 +143,8 @@ schedule:                 # 时间表
 - [adguardhome 插件](https://github.com/rufengsuixing/luci-app-adguardhome) © rufengsuixing
 
 - [Hello Word 插件](https://github.com/jerrykuku/luci-app-vssr) © jerrykuku
+
+- [Hello Word 插件修复冲突版](https://github.com/Leo-Jo-My/luci-app-vssr-plus) © Leo-Jo-My
 
 - [OpenAppFilter 插件](https://github.com/destan19/OpenAppFilter) © destan19
 

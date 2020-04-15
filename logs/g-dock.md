@@ -16,3 +16,7 @@
 1. 移除webadmin
 2. 添加OpenAppFilter过滤器
 3. 修正OpenAppFilter编译问题
+
+## 2020年4月15日
+
+1. 测试Leo-Jo-My的HelloWord插件

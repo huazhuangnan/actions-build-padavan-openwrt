@@ -12,6 +12,8 @@ adguardhome_url='https://github.com/rufengsuixing/luci-app-adguardhome.git' # ad
 lienol_url='https://github.com/Lienol/openwrt-package.git'       # Lienol 包地址
 vssr_url_rely='https://github.com/jerrykuku/lua-maxminddb.git'   # vssr lua-maxminddb依赖
 vssr_url='https://github.com/jerrykuku/luci-app-vssr.git'        # vssr地址
+vssr_plus_rely='https://github.com/Leo-Jo-My/my.git'             # vssr_plus 依赖
+vssr_plus='https://github.com/Leo-Jo-My/luci-app-vssr-plus.git'  # vssr_plus 地址
 filter_url='https://github.com/destan19/OpenAppFilter.git'       # AppFilter 地址
 # 命令
 # echo "修改机器名称"
@@ -82,3 +84,9 @@ echo 'CONFIG_PACKAGE_luci-app-oaf=y' >> .config
 echo 'CONFIG_PACKAGE_kmod-oaf=y' >> .config
 echo 'CONFIG_PACKAGE_appfilter=y' >> .config
 echo 'CONFIG_PACKAGE_luci-i18n-oaf-zh-cn=y'  >> .config
+
+echo '添加Leo-Jo-My的Hello World,并且使用默认包配置'
+git clone $vssr_plus_rely package/lean/luci-vssr-plus-rely
+git clone $vssr_plus_rely package/lean/luci-app-vssr-plus
+echo 'CONFIG_PACKAGE_luci-app-vssr-plus=y' >> .config
+echo 'CONFIG_PACKAGE_luci-i18n-vssr-plus-zh-cn=y'  >> .config
