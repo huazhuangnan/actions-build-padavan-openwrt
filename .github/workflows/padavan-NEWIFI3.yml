@@ -91,7 +91,7 @@ jobs:
         fi
         # 4. 清理构建
         sudo ./clear_tree
-        sudo ./build_firmware_bkye $t_item          # $t_item  是循环的子对象
+        sudo ./build_firmware_modify $t_item          # $t_item  是循环的子对象
         sudo mv -f images/*.trx ${WORK_PATH}/images/
         done
         echo "::set-env name=FILE_NAME::$T_NAMES-$(date "+%Y%m%d")"  # 包名
