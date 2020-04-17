@@ -4,8 +4,8 @@
 # # # # # # # # # # #
 name: OpenWrt CI G-DOCK
 on:
-  schedule:                           # 时间表
-    - cron: '0 19 * * *'              # 每天国际时间19点，北京时间凌晨3点执行(北京+8)
+  # schedule:                           # 时间表
+  #   - cron: '0 19 * * *'              # 每天国际时间19点，北京时间凌晨3点执行(北京+8)
   push:                               # push 操作
     branches:                         # 分支
       - master                        # 主分支

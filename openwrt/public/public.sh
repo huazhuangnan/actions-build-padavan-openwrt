@@ -85,8 +85,8 @@ echo 'CONFIG_PACKAGE_kmod-oaf=y' >> .config
 echo 'CONFIG_PACKAGE_appfilter=y' >> .config
 echo 'CONFIG_PACKAGE_luci-i18n-oaf-zh-cn=y'  >> .config
 
-echo '添加Leo-Jo-My的Hello World,并且使用默认包配置'
-git clone $vssr_plus_rely package/lean/luci-vssr-plus-rely
-git clone $vssr_plus_rely package/lean/luci-app-vssr-plus
-echo 'CONFIG_PACKAGE_luci-app-vssr-plus=y' >> .config
-echo 'CONFIG_PACKAGE_luci-i18n-vssr-plus-zh-cn=y'  >> .config
+# echo '添加Leo-Jo-My的Hello World,并且使用默认包配置'
+# git clone $vssr_plus_rely package/lean/luci-vssr-plus-rely
+# git clone $vssr_plus_rely package/lean/luci-app-vssr-plus
+# echo 'CONFIG_PACKAGE_luci-app-vssr-plus=y' >> .config
+# echo 'CONFIG_PACKAGE_luci-i18n-vssr-plus-zh-cn=y'  >> .config
