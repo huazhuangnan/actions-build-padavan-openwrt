@@ -16,7 +16,7 @@
 
 - 如果有啥问题欢迎提交 [Lssues](https://github.com/HuaZhuangNan/actions-build-padavan-openwrt/issues) 反馈或者 TG:[https://t.me/huazhuangnan](https://t.me/huazhuangnan)邮箱：huazhuangnan@foxmail.com
 
-- 历史自编译网盘地址：[https://pan.baidu.com/s/1JM3bcyOBvK6yx\_-B_IaQrA](https://pan.baidu.com/s/1JM3bcyOBvK6yx_-B_IaQrA);提取码：**7a0u**
+- 历史自编译网盘地址：[https://pan.baidu.com/s/10_4qsIDBsLracQb_4QK6Gg](https://pan.baidu.com/s/10_4qsIDBsLracQb_4QK6Gg);提取码：**r6ie**
 
 - 恩山: [https://www.right.com.cn/forum/?567122](https://www.right.com.cn/forum/?567122)
 
