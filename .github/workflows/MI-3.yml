@@ -1,8 +1,8 @@
 # # # # # # # # # # #
-#  自动构建 NEWIFI3
+#  自动构建 MI-3
 #     花妆男
 # # # # # # # # # # #
-name: Padavan CI NEWIFI3
+name: Padavan MI-3
 on:
   # schedule:                           # 时间表
   #   - cron: '0 19 * * *'              # 每天国际时间19点，北京时间凌晨3点执行(北京+8)
@@ -16,7 +16,7 @@ on:
   # watch:                              # 监视操作
   #   types: [started]                  # 点击 star 之后
 env:
-  T_NAMES: "NEWIFI3"                # 设备名字数组
+  T_NAMES: "MI-3"                   # 设备名字数组
   BASE_PATH: padavan                # 基础目录
   PUBLIC_PATH: public               # 公共目录
   VERSION_FILE: versions.inc        # 版本后缀
