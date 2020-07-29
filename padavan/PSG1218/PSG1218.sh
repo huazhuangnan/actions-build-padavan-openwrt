@@ -26,7 +26,7 @@ sed -i "s/tj_bin=\"/usr/bin/trojan\"/tj_bin=\"/usr/bin/trojan\"\n \
 			fi\n \
 		fi\n/g" $ssp_filename
 
-sed -i "v2_bin=\"/usr/bin/v2ray\"/v2_bin=\"/usr/bin/v2ray\"\n \
+sed -i "s/v2_bin=\"/usr/bin/v2ray\"/v2_bin=\"/usr/bin/v2ray\"\n \
   if [ ! -f \"$v2_bin\" ]; then\n \
 		if [ ! -f \"/tmp/v2ray\" ];then\n \
 			curl -k -s -o /tmp/v2ray --connect-timeout 10 --retry 3 $v2_bin_url\n \
@@ -45,8 +45,8 @@ sed -i "v2_bin=\"/usr/bin/v2ray\"/v2_bin=\"/usr/bin/v2ray\"\n \
 		fi\n/g" $ssp_filename
 
 # 拷贝文件测试
-echo WORK_PATH
-if [! ${WORK_PATH}/images/ ]; then
-  mkdir ${WORK_PATH}/images/
+if [! ./images/ ]; then
+ echo '创建文件夹'
+ mkdir ./images/
 fi
-cp -r $ssp_filename ${WORK_PATH}/images/
+cp -r $ssp_filename ./images/
