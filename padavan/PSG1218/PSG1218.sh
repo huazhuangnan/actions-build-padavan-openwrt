@@ -1,7 +1,7 @@
 # 变量
 tj_bin_url="https://cdn.jsdelivr.net/gh/vb1980/Padavan-build/ssp/trojan" # tj_bin下载路径
 v2_bin_url="https://cdn.jsdelivr.net/gh/vb1980/Padavan-build/ssp/v2ray"
-ssp_filename="./user/shadowsocks/scripts/shadowsocks.sh"
+export ssp_filename="./user/shadowsocks/scripts/shadowsocks.sh"
 
 # 是否超频
 echo "CONFIG_FIRMWARE_CPU_600MHZ=y" >> .config
@@ -45,4 +45,8 @@ sed -i "v2_bin=\"/usr/bin/v2ray\"/v2_bin=\"/usr/bin/v2ray\"\n \
 		fi\n/g" $ssp_filename
 
 # 拷贝文件测试
+echo WORK_PATH
+if [! ${WORK_PATH}/images/ ]; then
+  mkdir ${WORK_PATH}/images/
+fi
 cp -r $ssp_filename ${WORK_PATH}/images/
