@@ -92,7 +92,7 @@ schedule:                 # 时间表
   |   |-- workfloms     # 存放 Action 的 YML文件
   |-- openwrt           # openwrt 有关
   |   |-- backups       # openwrt 文件备份 以及 openwrt 编译模板
-  |   |-- public.sh      # 公共的修改执行文件
+  |   |-- public.sh     # 公共的修改执行文件
   |-- padavan           # padavan 有关
   |   |-- backups       # padanvan文件备份 以及 padavan 编译模板
   |   |-- public.sh     # 公共的修改执行文件
