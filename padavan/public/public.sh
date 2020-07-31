@@ -57,7 +57,7 @@ sed -i "/CONFIG_FIRMWARE_INCLUDE_WYYBIN/d" >> .config    # 删除配置项 网�
 # 科学
 echo "CONFIG_FIRMWARE_INCLUDE_SHADOWSOCKS=y" >> .config  # SS plus+
 echo "CONFIG_FIRMWARE_INCLUDE_SSSERVER=n" >> .config     # SS server
-echo "CONFIG_FIRMWARE_INCLUDE_SSOBFS=n" >> .config # simple-obfs混淆插件
+echo "CONFIG_FIRMWARE_INCLUDE_SSOBFS=y" >> .config # simple-obfs混淆插件
 
 #  代理
 echo "CONFIG_FIRMWARE_INCLUDE_SRELAY=n" >> .config       # SOCKS proxy
@@ -92,7 +92,7 @@ echo "CONFIG_FIRMWARE_INCLUDE_CADDYBIN=n" >> .config     # 集成caddu执行文�
 echo "CONFIG_FIRMWARE_INCLUDE_ZEROTIER=n" >> .config     # zerotier ~1.3M
 
 # Default
-
+sed -i 's/CONFIG_FIRMWARE_INCLUDE_OPENSSL_EXE=n/CONFIG_FIRMWARE_INCLUDE_OPENSSL_EXE=y/g' .config
 ### Include OpenSSH instead of dropbear. openssl ~1.2MB, openssh ~1.0MB
 echo "CONFIG_FIRMWARE_INCLUDE_OPENSSH=n" >> .config
 

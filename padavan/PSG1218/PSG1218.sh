@@ -1,6 +1,6 @@
 # 变量
 tj_bin_url="https://cdn.jsdelivr.net/gh/vb1980/Padavan-build/ssp/trojan" # tj_bin下载路径
-v2_bin_url="https://cdn.jsdelivr.net/gh/vb1980/Padavan-build\/ssp\/v2ray"
+v2_bin_url="https://cdn.jsdelivr.net/gh/vb1980/Padavan-build/ssp/v2ray"
 export ssp_filename="./user/shadowsocks/scripts/shadowsocks.sh"
 
 # 是否超频
