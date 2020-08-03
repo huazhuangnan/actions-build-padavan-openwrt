@@ -79,7 +79,7 @@ jobs:
           sudo chmod +x $WORK_PATH/$t_item.sh
           echo "${t_item} 自定义SH文件拷贝成功"
         fi
-        if[ -f $BASE_PATH/$t_item/shadowsocks.sh ] ; then
+        if [ -f $BASE_PATH/$t_item/shadowsocks.sh ] ; then
           mv -f $BASE_PATH/$t_item/shadowsocks.sh $WORK_PATH/user/shadowsocks/scripts/shadowsocks.sh
           echo "${t_item} SSPlus SH文件拷贝成功"
         fi
