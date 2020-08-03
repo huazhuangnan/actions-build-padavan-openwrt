@@ -43,10 +43,3 @@ sed -i "s#v2_bin=\"/usr/bin/v2ray\"/v2_bin=\"/usr/bin/v2ray\"\n \
 			v2_bin=\"/tmp/v2ray\"\n \
 			fi\n \
 		fi\n#g" $ssp_filename
-
-# 拷贝文件测试
-if [ ! -d ./images/ ]; then
- echo '创建文件夹'
- mkdir ./images/
-fi
-cp -r $ssp_filename ./images/

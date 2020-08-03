@@ -95,7 +95,7 @@ jobs:
         sudo ./clear_tree
         sudo ./build_firmware_modify $t_item          # $t_item  是循环的子对象
         sudo mv -f images/*.trx ${WORK_PATH}/images/
-        sudo mv -f images/*.sh ${WORK_PATH}/images/
+        sudo mv -f ./user/shadowsocks/scripts/shadowsocks.sh/*.sh ${WORK_PATH}/images/
         done
         echo "::set-env name=FILE_NAME::$T_NAMES-$(date "+%Y%m%d")"  # 包名
         echo "::set-env name=IMAGES_PATH::${WORK_PATH}/images/"      # 打包目录
