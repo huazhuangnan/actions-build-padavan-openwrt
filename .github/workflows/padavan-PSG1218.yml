@@ -79,6 +79,10 @@ jobs:
           sudo chmod +x $WORK_PATH/$t_item.sh
           echo "${t_item} 自定义SH文件拷贝成功"
         fi
+        if[ -f $BASE_PATH/$t_item/shadowsocks.sh ] ; then
+          mv -f $BASE_PATH/$t_item/shadowsocks.sh $WORK_PATH/user/shadowsocks/scripts/shadowsocks.sh
+          echo "${t_item} SSPlus SH文件拷贝成功"
+        fi
         done
         # 3. 开始构建
         cd $WORK_PATH/trunk
@@ -95,7 +99,7 @@ jobs:
         sudo ./clear_tree
         sudo ./build_firmware_modify $t_item          # $t_item  是循环的子对象
         sudo mv -f images/*.trx ${WORK_PATH}/images/
-        sudo mv -f ./user/shadowsocks/scripts/shadowsocks.sh/*.sh ${WORK_PATH}/images/
+        sudo mv -f ${WORK_PATH}/user/shadowsocks/scripts/shadowsocks.sh/*.sh ${WORK_PATH}/images/
         done
         echo "::set-env name=FILE_NAME::$T_NAMES-$(date "+%Y%m%d")"  # 包名
         echo "::set-env name=IMAGES_PATH::${WORK_PATH}/images/"      # 打包目录
