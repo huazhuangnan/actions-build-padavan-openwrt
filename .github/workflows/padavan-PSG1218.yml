@@ -97,7 +97,7 @@ jobs:
         sed -i "s/^CONFIG_TOOLCHAIN_DIR=.*$/CONFIG_TOOLCHAIN_DIR=${CONFIG_TOOLCHAIN_DIR}/g" .config
         sudo cp -f .config ${WORK_PATH}/images/
         sudo ./clear_tree_simple
-        sudo fakeroot ./build_firmware_modify $t_item 0        # $t_item  是循环的子对象
+        sudo fakeroot ./build_firmware_modify $t_item        # $t_item  是循环的子对象
         sudo mv -f images/*.trx ${WORK_PATH}/images/
         done
         echo "::set-env name=FILE_NAME::$T_NAMES-$(date "+%Y%m%d")"  # 包名
