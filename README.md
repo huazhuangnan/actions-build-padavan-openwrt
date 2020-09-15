@@ -22,7 +22,7 @@
 
 - B 站(有视频): [https://space.bilibili.com/436465779](https://space.bilibili.com/436465779)
 
-- 整理编写不易，喜欢的话右上角给个 **star** 呗，本人主学 WEB，大专，现读大三找实习中，有啥好工作引荐下呗；
+- 整理编写不易，喜欢的话右上角给个 **star** 呗
 
 ## [openwrt 单独参数及功能说明](/openwrt/readme.md)
 
