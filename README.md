@@ -39,7 +39,16 @@
 - [NEWIFI3](./logs/n3.md)
 - [G-DOCK2.0](./logs/g-dock.md)
 
-## 编译方法
+## 本地编译
+
+```bash
+git clone https://github.com/HuaZhuangNan/actions-build-padavan-openwrt.git --depth=1 # 下载
+cd actions-build-padavan-openwrt/scripts  # 进入目录        
+chmod +x ./*.sh                       # 添加编译sh执行权限
+./padavan.sh PSG1218 -s -p -l -o ./   # 编译 PSG1218 详细日志 开启代理 修改登录页
+```
+
+## github 编译方法
 
 - 注：所有固件都是下载的，所以需要编译其他版本的yml去改连接和编译的配置就好
 - **Fork** 到自己仓库后(按需修改配置文件)
@@ -97,6 +106,8 @@ schedule:                 # 时间表
   |   |-- backups       # padanvan文件备份 以及 padavan 编译模板
   |   |-- public.sh     # 公共的修改执行文件
   |-- screenshots       # 效果目录
+  |-- logs              # 更新日志目录
+  |-- scripts           # 脚本目录
 ```
 
 ## [编译结果欣赏图](./screenshots/readme.md)
