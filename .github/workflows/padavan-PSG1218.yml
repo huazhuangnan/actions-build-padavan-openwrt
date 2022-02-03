@@ -39,7 +39,7 @@ jobs:
           cd ./scripts/                                                # 进入目录
           sudo chmod +x ./*.sh                                         # 添加编译sh执行权限
           OUT_DIR="${ROOT_DIR}/out/$(date '+%Y-%m-%d')"                # 输出目录
-          ./padavan.sh $DEVICES -s -p -l -o $OUT_DIR # 编译 DEVICES 显示详细日志 开启代理 修改登录页
+          ./padavan.sh $DEVICES -s -l -o $OUT_DIR # 编译 DEVICES 显示详细日志 关闭代理 修改登录页
           echo "::set-env name=FILE_NAME::$DEVICES-$(date "+%Y%m%d")"  # 包名
           echo "::set-env name=IMAGES_PATH::$OUT_DIR"                  # 打包目录
       - name: Upload Packages # 4. 打包文件并且上传到当前主分支
