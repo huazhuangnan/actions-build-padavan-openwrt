@@ -17,12 +17,12 @@ on:
   #   types: [started]                  # 点击 star 之后
 env:
   DEVICES: "PSG1218" # 设备名字数组
+  UPLOAD_FIRMWARE: true # 导出固件
+  ACTIONS_ALLOW_UNSECURE_COMMANDS: true
 jobs:
   build:
     runs-on: ubuntu-18.04
     if: github.event.repository.owner.id == github.event.sender.id # 自己点的 start
-    env:
-      ACTIONS_ALLOW_UNSECURE_COMMANDS: true
     steps:
       - name: Checkout Master # 1.导入主分支
         uses: actions/checkout@master

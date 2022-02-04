@@ -87,6 +87,8 @@ app(){
   if [ $PROXY_FLAG = true ];then
     echo '设置代理'
     bash $CURRENT_DIR/public.sh start_proxy
+  else
+    echo '未设置代理'
   fi
 
   echo '初始化'
@@ -197,7 +199,7 @@ main(){
       '-v'|'--version') # 显示版本号
         app_info
         if [ $# -eq 1 ];then
-         exit 0
+          exit 0
         fi
       ;;
       '-h'|'--help') # 显示帮助信息
